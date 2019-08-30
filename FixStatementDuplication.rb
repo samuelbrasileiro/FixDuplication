@@ -1,6 +1,7 @@
 class FixStatementDuplication
 
-  def initialize(filePath, line, duplicatedMethod)
+  def initialize(projectPath, filePath, line, duplicatedMethod)
+    @projectPath = projectPath
     @filePath = filePath
     @duplicatedMethod = duplicatedMethod
     @line = line
@@ -39,6 +40,15 @@ class FixStatementDuplication
     e = File.open(fileDirectory, 'w')
     e.write(baseFileContent)
     e.close
+    makeCommit()
+  end
+  
+
+  def makeCommit()
+    Dir.chdir(@projectPath)
+    commitMesssage = "Build Conflict resolved automatic, removed " << @duplicatedMethod << " declaration in line " << @line << " of file " << @filePath
+    %x(git add -u)
+    %x(git commit -m "#{commitMesssage}")
   end
 
 end

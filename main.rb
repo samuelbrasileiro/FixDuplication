@@ -10,17 +10,6 @@ if ARGV.length < 1
   return
 end
 
-# test = FixUnavailableSymbol.new("sanity/quickml", "/home/arthurpires/Documents/faculdade/TAES/quickml",
-# "d1b6903a40c8cd359bcd02fc34b837f41f48f1e9", "src/main/java/quickdt/predictiveModels/decisionTree/TreeBuilder.java",
-# "attributeCharacteristics")
-# test.fix("buildTree", "")
-
-# test = FixUnavailableSymbol.new("sanity/quickml", "/home/arthurpires/Documents/faculdade/TAES/quickml",
-#   "d1b6903a40c8cd359bcd02fc34b837f41f48f1e9", "src/main/java/quickdt/predictiveModels/decisionTree/TreeBuilder.java",
-#   "attributeCharacteristics", 151)
-# content = File.read("/home/arthurpires/Documents/faculdade/TAES/fixPatternRequestUpdate/baseCommitClone/src/main/java/quickdt/predictiveModels/decisionTree/TreeBuilder.java")
-# test.getMethodName(content, 151)
-# return
 
 # Pre setup
 puts "Entry your password"
@@ -99,7 +88,7 @@ if conflictResult[0] #se existir 2 parents
       resp = STDIN.gets()
 
       if resp != "n" && resp != "N"
-        fixer = FixStatementDuplication.new(fileToChange, conflictLine, methodName)
+        fixer = FixStatementDuplication.new(projectName, fileToChange, conflictLine, methodName)
         fixer.fixDuplication
       end
 
