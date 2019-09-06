@@ -50,7 +50,7 @@ if conflictResult[0] #se existir 2 parents
   unavailableResult = statementDuplicationExtractor.extractionFilesInfo(travisLog)
 
 
-  #puts "unavailableResult = #{unavailableResult}"
+  puts "unavailableResult = #{unavailableResult}"
 
   if unavailableResult[0] == "statementDuplication"
 
@@ -61,7 +61,7 @@ if conflictResult[0] #se existir 2 parents
     bcstatementDuplication = BCStatementDuplication.new(gumTree, projectName, projectPath, commitHash, conflictParents, conflictCauses)
     bcStDuplicationResult = bcstatementDuplication.getGumTreeAnalysis()
 
-    #print("\bcStDuplicationResult = \n#{bcStDuplicationResult}\n")
+    puts"\bcStDuplicationResult = \n#{bcStDuplicationResult}"
 
 
     if bcStDuplicationResult[0] == true
